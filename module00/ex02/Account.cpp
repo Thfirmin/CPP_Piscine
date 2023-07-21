@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:19:32 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/20 11:04:53 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:28:16 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void	Account::_displayTimestamp( void ) {
 void	Account::makeDeposit( int deposit ) {
 	long int	finalAmount;
 
-	// index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
 	finalAmount = this->checkAmount() + deposit;
 	this->_amount = finalAmount;
 	this->_nbDeposits += 1;
@@ -124,8 +123,6 @@ void	Account::makeDeposit( int deposit ) {
 
 bool	Account::makeWithdrawal( int withdrawal ) {
 	long int	finalAmount;
-	// index:0;p_amount:47;withdrawal:refused
-	// index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
 
 	finalAmount = this->checkAmount() - withdrawal;
 	if (finalAmount < 0) {
@@ -143,6 +140,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 	return true;
 }
 
+// Static initialization
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;

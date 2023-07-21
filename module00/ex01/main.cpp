@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:32:12 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/19 20:41:37 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:25:45 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "PhoneBook.hpp"
 
 PhoneBook	book;
-
-//static void	searchCommand(void);
 
 void	setFakeInput(void);
 
@@ -67,12 +65,3 @@ void	setFakeInput(void) {
 	}
 	return ;
 }
-
-/*static void	searchCommand(void) {
-	int	idx;
-
-	//PhoneBook::displayPhoneBook(book);
-	std::cout << "Inform the index of your search: ";
-	std::cin >> idx;
-	PhoneBook::displayContact(book, idx);
-}*/
