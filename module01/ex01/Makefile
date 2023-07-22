@@ -1,4 +1,4 @@
-NAME =	ex-01
+NAME =	moarBrainz
 
 CPP =	c++
 

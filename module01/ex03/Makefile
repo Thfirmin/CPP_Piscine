@@ -1,4 +1,4 @@
-NAME =	ex-03
+NAME =	unneccessaryViolence
 
 CPP =	c++
 

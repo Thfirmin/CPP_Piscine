@@ -1,4 +1,4 @@
-NAME =	ex-04
+NAME =	sedIsForLosers
 
 CPP =	c++
 

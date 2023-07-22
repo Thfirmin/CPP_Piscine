@@ -1,4 +1,4 @@
-NAME =	ex-02
+NAME =	hiThisIsBrain
 
 CPP =	c++
 

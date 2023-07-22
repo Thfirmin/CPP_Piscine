@@ -1,4 +1,4 @@
-NAME =	ex-05
+NAME =	harl2.0
 
 CPP =	c++
 

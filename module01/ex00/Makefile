@@ -1,4 +1,4 @@
-NAME =	ex-00
+NAME =	braiiiiiiinnnzzzz
 
 CPP =	c++
 
