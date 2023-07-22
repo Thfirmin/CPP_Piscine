@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 00:59:16 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/22 02:02:00 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/07/22 09:19:37 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 class	Harl {
 	private:
 		// Variable
-		static int	nbTypes;
+		static const int	_nbLevels;
+		static const std::string	_levelTypes[];
 
 		// Functions
 		void	debug( void );
