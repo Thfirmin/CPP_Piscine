@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:24:18 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/29 10:08:03 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:17:12 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@ class	Fixed {
 		Fixed( Fixed const& src );
 		~Fixed( void );
 
-		// Operators
-		Fixed&	operator=(Fixed const& operand);
-
-		// Methods
+		// Operator
+		Fixed&	operator=(Fixed const& sign);
 
 		// Getter * Setter
-		int	getRawBits( void ) const;
+		int			getRawBits( void ) const;
 		static int	getFractionalBits( void );
 
-		void	setRawBits( int const raw );
+		void		setRawBits( int const raw );
 
 	private:
 		int					_rawBits;

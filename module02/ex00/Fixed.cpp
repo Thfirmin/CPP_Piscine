@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:25:02 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/29 10:14:36 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/07/30 11:50:55 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Fixed::Fixed( void ) {
 Fixed::Fixed( Fixed const& src ) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
+	return ;
 }
 
 Fixed::~Fixed( void ) {
@@ -27,9 +28,9 @@ Fixed::~Fixed( void ) {
 	return ;
 }
 
-Fixed&	Fixed::operator=(Fixed const& operand) {
+Fixed&	Fixed::operator=(Fixed const& sign) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_rawBits = operand.getRawBits();
+	this->_rawBits = sign.getRawBits();
 	return *this;
 }
 
@@ -43,9 +44,10 @@ int	Fixed::getFractionalBits( void ) {
 	return Fixed::_fractionalBits;
 }
 
-void	Fixed::setRawBits( int rawBits ) {
+void	Fixed::setRawBits( int const raw ) {
 	std::cout << "setRawBits member function called" << std::endl;
-	this->_rawBits = rawBits;
+	this->_rawBits = raw;
 	return ;
 }
+
 const int	Fixed::_fractionalBits = 8;
