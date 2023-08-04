@@ -6,13 +6,13 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:38 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/20 21:42:24 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:18:17 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie( void ) {
+Zombie::Zombie( void ) : name("") {
 	return ;
 }
 

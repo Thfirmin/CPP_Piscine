@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:19:32 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/20 11:28:16 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:38:31 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <ctime>
 
 // Private Constructor
-Account::Account( void ) {
+Account::Account( void ) : _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0) {
 	return ;
 }
 
