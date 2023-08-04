@@ -6,13 +6,13 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:25:02 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/30 11:50:55 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:07:23 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed( void ) {
+Fixed::Fixed( void ) : _rawBits(0) {
 	std::cout << "Default constructor called" << std::endl;
 	return ;
 }

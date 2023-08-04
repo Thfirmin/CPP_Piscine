@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 10:04:19 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/02 01:42:17 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:06:56 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Constructor * Destructor
 
-Fixed::Fixed( void ) {
+Fixed::Fixed( void ) : _rawBits(0) {
 //	std::cout << "Default constructor called" << std::endl;
 	return ;
 }
