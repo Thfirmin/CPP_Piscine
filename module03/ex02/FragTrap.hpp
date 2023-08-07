@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 00:33:30 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/05 00:58:00 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/07 01:05:42 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ class	FragTrap : public ClapTrap {
 
 		FragTrap&	operator=( FragTrap const& sign );
 
-	private:
+	protected:
+		static const std::string	_stdName;
+		static const int			_stdHitPoints;
+		static const int			_stdEnergyPoints;
+		static const int			_stdAttackDamage;
 };
 
 #endif

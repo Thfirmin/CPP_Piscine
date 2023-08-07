@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 18:43:22 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/05 00:31:21 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/07 00:54:49 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main( void )
 
 
 	std::cout << clap;
-	std::cout << many;
+	std::cout << many << std::endl;
 	many = clap;
 	std::cout << clap;
 	std::cout << many;

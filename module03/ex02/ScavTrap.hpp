@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:41:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/05 00:23:21 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/07 00:39:11 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class	ScavTrap : public ClapTrap {
 	public:
-		// Constructor * Destructor
 		ScavTrap( void );
 		ScavTrap( ScavTrap const& src );
 		ScavTrap( std::string name );
@@ -27,7 +26,11 @@ class	ScavTrap : public ClapTrap {
 
 		ScavTrap&	operator=( ScavTrap const& sign );
 
-	private:
+	protected:
+		static const std::string	_stdName;
+		static const int			_stdHitPoints;
+		static const int			_stdEnergyPoints;
+		static const int			_stdAttackDamage;
 };
 
 #endif

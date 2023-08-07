@@ -5,55 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 18:44:51 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/05 00:30:05 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/08/06 22:17:29 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/08/07 00:24:43 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-// Variables
-CtList*	ClapTrap::_instList = 0;
+// ATRIBUTE |===================================================================
 
-// Constructor * Destructro 
-ClapTrap::ClapTrap( void ) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	this->_name = ClapTrap::_authName("ClapTrap");
-	ClapTrap::_ctAddBack( this );
-	std::cout << this->_name << ": Default Created for OPEN!" << std::endl;
-	return ;
-}
+const std::string	ClapTrap::_stdName = "clapTrap";
+const int	ClapTrap::_stdHitPoints = 10;
+const int	ClapTrap::_stdEnergyPoints = 10;
+const int	ClapTrap::_stdAttackDamage = 0;
 
-ClapTrap::ClapTrap( std::string name ) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	this->_name = ClapTrap::_authName(name);
-	ClapTrap::_ctAddBack( this );
-	std::cout << this->_name << ": Named Created for OPEN!" << std::endl;
+ClapTrapList*	ClapTrap::_clapTrapList = 0;
+
+// CONSTRUCTOR * DESTRUCTOR |===================================================
+
+ClapTrap::ClapTrap( void ) : _hitPoints(_stdHitPoints), _energyPoints(_stdEnergyPoints), _attackDamage(_stdAttackDamage) {
+	this->setName(std::string(_stdName));
+	ClapTrap::_ctlPush( this );
+	std::cout << this->_name << ": ClapTrap default constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap( ClapTrap const& src ) {
 	*this = src;
-	ClapTrap::_ctAddBack( this );
-	std::cout << this->_name << ": Copied for OPEN!" << std::endl;
+	ClapTrap::_ctlPush( this );
+	std::cout << this->_name << ": ClapTrap copy constructor called" << std::endl;
+	return ;
+}
+
+ClapTrap::ClapTrap( std::string name ) : _hitPoints(_stdHitPoints), _energyPoints(_stdEnergyPoints), _attackDamage(_stdAttackDamage) {
+	this->setName( name );
+	ClapTrap::_ctlPush( this );
+	std::cout << this->_name << ": ClapTrap named constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::~ClapTrap( void ) {
-	ClapTrap::_ctDeleteOne( this );
-	std::cout << this->_name << ": Remember, robots! you are the next evolution! Until a human shuts them down." << std::endl;
+	ClapTrap::_ctlDelete( this );
+	std::cout << this->_name << ": ClapTrap destructor called" << std::endl;
 	return ;
 }
 
-// Methods
-void	ClapTrap::attack( const std::string& target ) {
+// METHOD |=====================================================================
+
+void	ClapTrap::attack( std::string const& target ) {
 	if (!this->_hitPoints || !this->_energyPoints)
 		return ;
 
-	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;	
-	this->_energyPoints --;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 
-	ClapTrap* clapTrap = ClapTrap::_getClapTrap(target);
-	if (clapTrap)
-		clapTrap->takeDamage(this->_attackDamage);
+	this->setEnergyPoints(this->_energyPoints - 1);
+
+	ClapTrap*	enemy = ClapTrap::_ctlPull(target);
+	if (enemy)
+		enemy->takeDamage(this->_attackDamage);
 	else
 		std::cout << "You did not hit your attack at all" << std::endl;
 
@@ -63,11 +72,10 @@ void	ClapTrap::attack( const std::string& target ) {
 void	ClapTrap::takeDamage( unsigned int amount ) {
 	if (!this->_hitPoints)
 		return ;
-
+	
 	std::cout << "ClapTrap " << this->_name << " is attacked, taking " << amount << " points of damage!" << std::endl;
-	this->_hitPoints -= amount;
-	if (this->_hitPoints < 0)
-		this->_hitPoints = 0;
+
+	this->setHitPoints(this->_hitPoints - amount);
 
 	return ;
 }
@@ -77,25 +85,74 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 		return ;
 
 	std::cout << "ClapTrap " << this->_name << " is repaired , receiving " << amount << " hit points!" << std::endl;
-	this->_hitPoints += amount;
-	this->_energyPoints --;
+
+	this->setEnergyPoints(this->_energyPoints - 1);
+	this->setHitPoints(this->_hitPoints + amount);
 
 	return ;
 }
 
-// Statics
-std::string	ClapTrap::_authName( std::string const& name ) {
-	std::string	authName = name;
-	CtList*	list;
-	bool	auth = false;
+void	ClapTrap::_ctlPush( ClapTrap* inst ) {
+	ClapTrapList* node = new ClapTrapList;
+	node->inst = inst;
+	node->next = 0;
+
+	if (!_clapTrapList)
+		_clapTrapList = node;
+	else {
+		ClapTrapList* lst = _clapTrapList;
+		while (lst->next)
+			lst = lst->next;
+		lst->next = node;
+	}
+	return ;
+}
+
+void	ClapTrap::_ctlDelete( ClapTrap* inst ) {
+	ClapTrapList*	node = _clapTrapList;
+	ClapTrapList*	aux = node->next;
+
+	if (node->inst == inst) {
+		_clapTrapList = aux;
+		delete node;
+	}
+	else {
+		while (aux) {
+			if (aux->inst == inst) {
+				node->next = aux->next;
+				delete aux;
+				return ;
+			}
+			node = aux;
+			aux = aux->next;
+		}
+	}
+	return ;
+}
+
+ClapTrap*	ClapTrap::_ctlPull( std::string const& name ) {
+	ClapTrapList*	list = _clapTrapList;
+
+	while (list) {
+		if (list->inst->getName() == name)
+			return list->inst;
+		list = list->next;
+	}
+	return 0;
+}
+
+std::string	ClapTrap::_ctlAuthName( std::string const& name ) {
+	bool			auth = false;
+	std::string		authName(name);
+	ClapTrapList*	list;
 
 	while (!auth) {
-		list = ClapTrap::_instList;
 		auth = true;
+		list = _clapTrapList;
 		while (list) {
-			if (list->clapTrap->getName() == authName) {
-				authName += "0";
+			if (authName == list->inst->getName()) {
 				auth = false;
+				authName += "0";
 				break ;
 			}
 			list = list->next;
@@ -104,77 +161,47 @@ std::string	ClapTrap::_authName( std::string const& name ) {
 	return authName;
 }
 
-void	ClapTrap::_ctAddBack( ClapTrap* clapTrap ) {
-	CtList*	list = ClapTrap::_instList;
+// OPERATOR |===================================================================
 
-	if (!list)
-		ClapTrap::_instList = new CtList(clapTrap);
-	else {
-		while (list->next) {
-			list = list->next;
-		}
-		list->next = new CtList(clapTrap);
-	}
-}
-
-void	ClapTrap::_ctDeleteOne( ClapTrap* clapTrap ) {
-	CtList* list = ClapTrap::_instList;
-	CtList*	aux = 0;
-
-	if (ClapTrap::_instList->clapTrap == clapTrap) {
-		ClapTrap::_instList = list->next;
-		delete list;
-		return ;
-	}
-	while (list) {
-		if (list->clapTrap == clapTrap) {
-			aux->next = list->next;
-			delete list;
-			return ;
-		}
-		aux = list;
-		list = list->next;
-	}
-	return ;
-}
-
-// Operators
 ClapTrap&	ClapTrap::operator=( ClapTrap const& sign ) {
-	this->_name = ClapTrap::_authName(sign.getName());
-	this->_hitPoints = sign.getHitPoints();
-	this->_energyPoints = sign.getEnergyPoints();
-	this->_attackDamage = sign.getAttackDamage();
+	this->setName(sign.getName());
+	this->setHitPoints(sign.getHitPoints());
+	this->setEnergyPoints(sign.getEnergyPoints());
+	this->setAttackDamage(sign.getAttackDamage());
 	return *this;
 }
 
-std::ostream&	operator<<( std::ostream& out, ClapTrap const& ct ) {
-	out << "(" << ct.getName() << "): ";
-	out << "| HP: " << ct.getHitPoints();
-	out << "| EP: " << ct.getEnergyPoints();
-	out << "| ATK: " << ct.getAttackDamage();
-	out << " |" << std::endl;
+std::ostream&	operator<<( std::ostream& out, ClapTrap const& clap ) {
+	out << "(" << clap.getName() << ")";
+	out << "[" << &clap << "]> ";
+	out << "HP: " << clap.getHitPoints() << " | ";
+	out << "EP: " << clap.getEnergyPoints() << " | ";
+	out << "ATK:" << clap.getAttackDamage() << " | ";
+	out << std::endl;
 	return out;
 }
 
-std::ostream&	operator<<( std::ostream& out, CtList* ctList ) {
+std::ostream&	operator<<( std::ostream& out, ClapTrapList const* list ) {
 	int	i = 0;
-	out << std::endl << "----------| Clap Trap List |----------" << std::endl;
-	while (ctList) {
-		out << "node[" << i++ << "]: ";
-		out << *ctList->clapTrap;
-		ctList = ctList->next;
+
+	while (list) {
+		out << "bot[" << ++i << "]: ";
+		out << *list->inst;
+		list = list->next;
 	}
-	out << "--------------------------------------" << std::endl;
 	return out;
 }
 
-// Getter * Setter
+// GETTER * SETTER |============================================================
+
 std::string	ClapTrap::getName( void ) const {
 	return this->_name;
 }
 
 void	ClapTrap::setName( std::string name ) {
+	name = ClapTrap::_ctlAuthName( name );
 	this->_name = name;
+	return ;
 }
 
 int	ClapTrap::getHitPoints( void ) const {
@@ -182,6 +209,8 @@ int	ClapTrap::getHitPoints( void ) const {
 }
 
 void	ClapTrap::setHitPoints( int hitPoints ) {
+	if (hitPoints < 0)
+		hitPoints = 0;
 	this->_hitPoints = hitPoints;
 	return ;
 }
@@ -191,6 +220,8 @@ int	ClapTrap::getEnergyPoints( void ) const {
 }
 
 void	ClapTrap::setEnergyPoints( int energyPoints ) {
+	if (energyPoints < 0)
+		energyPoints = 0;
 	this->_energyPoints = energyPoints;
 	return ;
 }
@@ -204,26 +235,6 @@ void	ClapTrap::setAttackDamage( int attackDamage ) {
 	return ;
 }
 
-CtList*	ClapTrap::getCtList( void ) {
-	return ClapTrap::_instList;
-}
-
-ClapTrap*	ClapTrap::_getClapTrap( std::string const& name ) {
-	CtList*	list = ClapTrap::_instList;
-
-	while (list) {
-		if (list->clapTrap->getName() == name)
-			return list->clapTrap;
-		list = list->next;
-	}
-	return 0;
-}
-
-// struct CtList
-CtList::CtList( ClapTrap* clapTrap ) : clapTrap(clapTrap), next(0) {
-	return ;
-}
-
-CtList::~CtList( void ) {
-	return ;
+ClapTrapList*	ClapTrap::getClapTrapList( void ) {
+	return ClapTrap::_clapTrapList;
 }

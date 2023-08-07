@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 22:41:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/07 00:39:11 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/08/05 00:33:30 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/08/07 01:13:04 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	FragTrap : virtual public ClapTrap {
 	public:
-		ScavTrap( void );
-		ScavTrap( ScavTrap const& src );
-		ScavTrap( std::string name );
-		~ScavTrap( void );
+		FragTrap( void );
+		FragTrap( FragTrap const& src );
+		FragTrap( std::string name );
+		~FragTrap( void );
 
-		void	guardGate( void );
+		void	highFivesGuys( void );
 
-		ScavTrap&	operator=( ScavTrap const& sign );
+		FragTrap&	operator=( FragTrap const& sign );
 
 	protected:
 		static const std::string	_stdName;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 18:44:00 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/05 00:29:17 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/08/06 22:15:43 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/08/07 00:30:32 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,69 +16,59 @@
 # include <iostream>
 # include <string>
 
-struct	CtList;
+struct	ClapTrapList;
 
 class	ClapTrap {
 	public:
-		// Constructor * Destructor
 		ClapTrap( void );
-		ClapTrap( std::string name );
 		ClapTrap( ClapTrap const& src );
+		ClapTrap( std::string name );
 		~ClapTrap( void );
 
-		// Methods
-		void	attack( const std::string& target );
+		void	attack( std::string const& target );
 		void	takeDamage( unsigned int amount );
 		void	beRepaired( unsigned int amount );
-		
 
-		// Getter * Setter
-		std::string		getName( void ) const;
-		int				getHitPoints( void ) const;
-		int				getEnergyPoints( void ) const;
-		int				getAttackDamage( void ) const;
-		static CtList*	getCtList( void );
-
-		// Operator
 		ClapTrap&	operator=( ClapTrap const& sign );
 
-	protected:
-		void			setName( std::string name );
-		void			setHitPoints( int hitPoints );
-		void			setEnergyPoints( int energyPoints );
-		void			setAttackDamage( int attackDamage );
+		std::string	getName( void ) const;
+		void		setName( std::string name );
+		int			getHitPoints( void ) const;
+		void		setHitPoints( int hitPoints );
+		int			getEnergyPoints( void ) const;
+		void		setEnergyPoints( int energyPoints );
+		int			getAttackDamage( void ) const;
+		void		setAttackDamage( int attackDamage );
 
-		static std::string	_authName( std::string const& name );
+		static ClapTrapList*	getClapTrapList( void );
+
+	protected:
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
+		
+		static const std::string	_stdName;
+		static const int			_stdHitPoints;
+		static const int			_stdEnergyPoints;
+		static const int			_stdAttackDamage;
+
+		static std::string			_ctlAuthName( std::string const& name );
 
 	private:
-		// Variables
-		std::string		_name;
-		int				_hitPoints;
-		int				_energyPoints;
-		int				_attackDamage;
+		static ClapTrapList*		_clapTrapList;
 
-		static CtList*	_instList;
-
-		// Static
-		static void			_ctAddBack( ClapTrap* clapTrap );
-		static void			_ctDeleteOne( ClapTrap* clapTrap );
-		
-		// Getter * Setter
-		static ClapTrap*	_getClapTrap( std::string const& name );
+		static void					_ctlPush( ClapTrap* inst );
+		static void					_ctlDelete( ClapTrap* inst );
+		static ClapTrap*			_ctlPull( std::string const& name );
 };
 
-// Structs
-struct	CtList {
-	CtList( ClapTrap* clapTrap );
-	~CtList( void );
-
-	ClapTrap*		clapTrap;
-	struct CtList*	next;
+struct	ClapTrapList {
+	ClapTrap*	inst;
+	struct ClapTrapList*	next;
 };
 
-// Debuggers
-std::ostream&	operator<<( std::ostream& out, ClapTrap const& ct );
-
-std::ostream&	operator<<( std::ostream& out, CtList* ctList );
+std::ostream&	operator<<( std::ostream& out, ClapTrap const& clap );
+std::ostream&	operator<<( std::ostream& out, ClapTrapList const* list );
 
 #endif

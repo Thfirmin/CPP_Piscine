@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:41:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/07 00:39:11 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/07 01:13:15 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	ScavTrap : virtual public ClapTrap {
 	public:
 		ScavTrap( void );
 		ScavTrap( ScavTrap const& src );

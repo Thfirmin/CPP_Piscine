@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 22:41:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/07 00:39:11 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/08/06 04:02:55 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/08/07 01:32:26 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	DiamondTrap : public FragTrap, public ScavTrap {
 	public:
-		ScavTrap( void );
-		ScavTrap( ScavTrap const& src );
-		ScavTrap( std::string name );
-		~ScavTrap( void );
+		DiamondTrap( void );
+		DiamondTrap( DiamondTrap const& src );
+		DiamondTrap( std::string name );
+		~DiamondTrap( void );
 
-		void	guardGate( void );
-
-		ScavTrap&	operator=( ScavTrap const& sign );
+		DiamondTrap& operator=( DiamondTrap const& sign );
 
 	protected:
 		static const std::string	_stdName;
 		static const int			_stdHitPoints;
 		static const int			_stdEnergyPoints;
 		static const int			_stdAttackDamage;
+
+	private:
+		std::string	name;
 };
 
 #endif
