@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:33:09 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/19 20:51:02 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/17 03:17:28 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,9 @@ void	PhoneBook::addList(void) {
 		if (input[0] == 'N')
 			return ;
 	}
-	for (int i = amount - 1; i >= 0; i --)
-		this->setContact(i + 1, this->_contact[i]);
+
+	for (int i = limit - 1; i > 0; i --)
+		this->setContact(i, this->_contact[i - 1]);
 	if (!std::cin.eof())
 		this->_contact[0].setFirstName(PhoneBook::getInput("First Name: "));
 	if (!std::cin.eof())
@@ -172,4 +173,4 @@ std::string	PhoneBook::_formatContactInfo(std::string info) {
 	return info;
 }
 
-int	PhoneBook::_limit = (sizeof(_contact) / sizeof(Contact));
+int	PhoneBook::_limit = PB_CONTACT_LIMITS; 

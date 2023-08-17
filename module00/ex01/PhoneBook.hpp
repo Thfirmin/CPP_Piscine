@@ -6,12 +6,16 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:32:35 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/19 21:01:11 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:27:59 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
+
+# ifndef PB_CONTACT_LIMITS
+#  define PB_CONTACT_LIMITS 8
+# endif
 
 # include "Contact.hpp"
 # include <iomanip>
@@ -21,7 +25,7 @@ class PhoneBook {
 	private:
 		static int		_limit;
 		int				_amount;
-		Contact			_contact[8];
+		Contact			_contact[PB_CONTACT_LIMITS];
 
 		void				_displayPhoneBook(void);
 		void				_displayContact(int i);

@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:32:12 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/20 11:25:45 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/17 03:25:23 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 PhoneBook	book;
 
-void	setFakeInput(void);
+static void	phoneBookHelp(void);
+
+static void	setFakeInput(void);
 
 int	main(int argc, char *argv[]) {
 
@@ -27,9 +29,9 @@ int	main(int argc, char *argv[]) {
 		setFakeInput();
 	while (1) {
 		cmd = PhoneBook::getInput("PhoneBook: ");
-		for (size_t i = 0, len = cmd.size(); i < len; i ++)
-			cmd[i] = std::toupper(cmd[i]);
-		if (!cmd.compare("ADD\0"))
+		if (!cmd.compare("HELP\0"))
+			phoneBookHelp();
+		else if (!cmd.compare("ADD\0"))
 			book.addList();
 		else if (!cmd.compare("SEARCH\0"))
 			book.searchList();
@@ -41,7 +43,7 @@ int	main(int argc, char *argv[]) {
 	return 0;
 }
 
-void	setFakeInput(void) {
+static void	setFakeInput(void) {
 	const std::string	tabFill[8][5] = {
 		{"Thino", "Tsukimichi", "thinotsuki", "+666 (666) 6666-6666", "This world is a bug and the moon's her patch"},
 		{"Thiago", "Firmino dos Santos", "thfirmin", "+55 21 999187619", "This world's a trash, but this trash's the treasure of my treasure"},
@@ -63,5 +65,17 @@ void	setFakeInput(void) {
 		book.setContact(i, contact);
 		book.setAmount(book.getAmount() + 1);
 	}
+	return ;
+}
+
+static void	phoneBookHelp(void)
+{
+	std::cout << "_________________________________________" << std::endl;
+	std::cout << "|        Phone Book Command Help        |" << std::endl;
+	std::cout << "|---------------------------------------|" << std::endl;
+	std::cout << "|ADD       Add a contact to your list   |" << std::endl;
+	std::cout << "|SEARCH    Search a contact in your list|" << std::endl;
+	std::cout << "|EXIT      Exit program                 |" << std::endl;
+	std::cout << "|_______________________________________|" << std::endl;
 	return ;
 }
