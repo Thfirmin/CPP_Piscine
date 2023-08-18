@@ -1,4 +1,4 @@
-NAME =	towardsAMoreUsefulFixedPointNumberClass
+NAME =	nowWeAreTalking
 
 CPP =	c++
 

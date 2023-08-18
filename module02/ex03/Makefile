@@ -1,4 +1,4 @@
-NAME =	towardsAMoreUsefulFixedPointNumberClass
+NAME =	BSP
 
 CPP =	c++
 

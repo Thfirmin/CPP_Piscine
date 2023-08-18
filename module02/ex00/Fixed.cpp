@@ -6,11 +6,13 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:25:02 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/04 12:07:23 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:41:23 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int	Fixed::_fractionalBits = 8;
 
 Fixed::Fixed( void ) : _rawBits(0) {
 	std::cout << "Default constructor called" << std::endl;
@@ -49,5 +51,3 @@ void	Fixed::setRawBits( int const raw ) {
 	this->_rawBits = raw;
 	return ;
 }
-
-const int	Fixed::_fractionalBits = 8;
