@@ -6,14 +6,14 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:42:08 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/18 00:07:51 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:46:52 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SedFile.struct.hpp"
 
 // Constructors * Destructors
-SedFile::SedFile(void) : _fileIn(0), _fileOut(0) {
+SedFile::SedFile(void) {
 	return ;
 }
 
