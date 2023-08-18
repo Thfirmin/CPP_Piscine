@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:05:11 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/21 01:38:11 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:54:48 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ class	HumanB {
 
 	public:
 		HumanB(std::string _name);
-		HumanB(std::string _name, Weapon& _weapon);
 		~HumanB(void);
 
 		void	setWeapon(Weapon& _weapon);
-		void	setWeapon(Weapon* _weapon);
 		void	attack(void);
 };
 

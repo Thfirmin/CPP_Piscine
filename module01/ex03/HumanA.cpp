@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:04:26 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/21 01:30:25 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:55:14 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ HumanA::~HumanA(void) {
 	return ;
 }
 
-void	HumanA::setWeapon(std::string _type) {
+void	HumanA::setWeapon(const std::string& _type) {
 	this->weapon.setType(_type);
 	return ;
 }

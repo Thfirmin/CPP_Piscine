@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:16:53 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/20 23:50:56 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:42:04 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class	Weapon {
 		Weapon(std::string _type);
 		~Weapon(void);
 
-		std::string	getType(void) const;
-		void		setType(std::string _type);
+		const std::string&	getType(void) const;
+		void		setType(const std::string& _type);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 00:58:53 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/22 10:25:53 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:27:35 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(int argc, char *argv[])
 	Harl	harl;
 
 	harl.levelFilter(argv[1]);
-	harl.complain("debug");
-	harl.complain("info");
-	harl.complain("warning");
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
 	harl.complain("ERROR");
 	harl.complain("errora");
 	return 0;

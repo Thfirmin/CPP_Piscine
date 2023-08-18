@@ -6,13 +6,13 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 14:05:17 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/22 00:33:44 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:09:41 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SedFile.struct.hpp"
 
-void	SedFile::replaceOccurrence(SedFile& sedFile, std::string s1, std::string s2) {
+void	SedFile::replaceOccurrence(SedFile& sedFile, const std::string s1, const std::string s2) {
 	std::string	line;
 
 	while (std::getline(sedFile._fileIn, line)) {

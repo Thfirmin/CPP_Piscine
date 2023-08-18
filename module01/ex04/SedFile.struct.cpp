@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:42:08 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/04 16:27:55 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:07:51 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ const std::string	SedFile::standardOutName(std::string fileName) {
 }
 
 // Getters * Setters
-bool	SedFile::fileIn(const std::string fileName) {
+bool	SedFile::fileIn(const std::string& fileName) {
 	if (fileName.empty()) {
 		errno = ENOENT;
 		perror("''");
@@ -43,7 +43,7 @@ bool	SedFile::fileIn(const std::string fileName) {
 	return true;
 }
 
-bool	SedFile::fileOut(const std::string fileName) {
+bool	SedFile::fileOut(const std::string& fileName) {
 	if (fileName.empty()) {
 		errno = ENOENT;
 		perror("''");

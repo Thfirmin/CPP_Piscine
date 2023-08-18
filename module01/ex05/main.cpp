@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 00:58:53 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/22 01:59:27 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:20:48 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(void)
 {
 	Harl	harl;
 
-	harl.complain("debug");
-	harl.complain("info");
-	harl.complain("warning");
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
 	harl.complain("ERROR");
-	harl.complain("errora");
+	harl.complain("ERRORA");
 	return 0;
 }

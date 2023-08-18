@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:40:10 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/04 16:27:55 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:09:56 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ struct	SedFile {
 
 		// Statics
 		static const std::string	standardOutName(std::string fileName);
-		static void					replaceOccurrence(SedFile& sedFile, std::string s1, std::string s2);
+		static void					replaceOccurrence(SedFile& sedFile, const std::string s1, const std::string s2);
 
 		// Getters * Setters
-		bool	fileIn(const std::string fileName);
-		bool	fileOut(const std::string fileName);
+		bool	fileIn(const std::string& fileName);
+		bool	fileOut(const std::string& fileName);
 };
 
 #endif

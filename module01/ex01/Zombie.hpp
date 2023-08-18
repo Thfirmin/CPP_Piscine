@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:32 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/20 21:55:33 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:37:51 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	Zombie {
 		Zombie( std::string _name );
 		~Zombie( void );
 
-		void	setName( std::string name );
+		void	setName( const std::string& name );
 		void	announce( void );
 };
 

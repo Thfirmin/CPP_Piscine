@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 00:59:16 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/07/22 09:19:37 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/18 00:12:07 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,20 @@
 # include <cctype>
 
 class	Harl {
+	public:
+		Harl( void );
+		~Harl( void );
+
+		void	complain( std::string level );
+
 	private:
-		// Variable
-		static const int	_nbLevels;
+		static const int			_nbLevels;
 		static const std::string	_levelTypes[];
 
-		// Functions
 		void	debug( void );
 		void	info( void );
 		void	warning( void );
 		void	error( void );
-
-	public:
-		// Constructors * Destructors
-		Harl( void );
-		~Harl( void );
-
-		// Functions
-		void	complain( std::string level );
 };
 
 #endif
