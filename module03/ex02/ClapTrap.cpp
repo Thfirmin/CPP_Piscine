@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 22:17:29 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/07 00:24:43 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/19 02:43:45 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,6 @@ std::string	ClapTrap::getName( void ) const {
 }
 
 void	ClapTrap::setName( std::string name ) {
-	name = ClapTrap::_ctlAuthName( name );
 	this->_name = name;
 	return ;
 }

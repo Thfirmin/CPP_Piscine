@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 00:34:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/07 01:35:55 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/19 02:41:49 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ const int	FragTrap::_stdAttackDamage = 30;
 // CONSTRUCTOR * DESTRUCTOR |===================================================
 
 FragTrap::FragTrap( void ) : ClapTrap() {
-	this->setName(FrapTrap::_stdName);
-	this->setHitPoints(FrapTrap::_stdHitPoints);
-	this->setEnergyPoints(FrapTrap::_stdEnergyPoints);
-	this->setAttackDamage(FrapTrap::_stdAttackDamage);
+	this->setName(FragTrap::_stdName);
+	this->setHitPoints(FragTrap::_stdHitPoints);
+	this->setEnergyPoints(FragTrap::_stdEnergyPoints);
+	this->setAttackDamage(FragTrap::_stdAttackDamage);
 	std::cout << this->_name << ": FragTrap default constructor called" << std::endl;
 	return ;
 }
