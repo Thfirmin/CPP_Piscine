@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 22:17:29 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/19 02:43:45 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/19 02:58:26 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,42 +194,44 @@ std::ostream&	operator<<( std::ostream& out, ClapTrapList const* list ) {
 
 // GETTER * SETTER |============================================================
 
-std::string	ClapTrap::getName( void ) const {
+const std::string&	ClapTrap::getName( void ) const {
 	return this->_name;
 }
 
-void	ClapTrap::setName( std::string name ) {
+void	ClapTrap::setName( const std::string& name ) {
 	this->_name = name;
 	return ;
 }
 
-int	ClapTrap::getHitPoints( void ) const {
+const int&	ClapTrap::getHitPoints( void ) const {
 	return this->_hitPoints;
 }
 
-void	ClapTrap::setHitPoints( int hitPoints ) {
+void	ClapTrap::setHitPoints( const int& hitPoints ) {
 	if (hitPoints < 0)
-		hitPoints = 0;
-	this->_hitPoints = hitPoints;
+		this->_hitPoints = 0;
+	else
+		this->_hitPoints = hitPoints;
 	return ;
 }
 
-int	ClapTrap::getEnergyPoints( void ) const {
+const int&	ClapTrap::getEnergyPoints( void ) const {
 	return this->_energyPoints;
 }
 
-void	ClapTrap::setEnergyPoints( int energyPoints ) {
+void	ClapTrap::setEnergyPoints( const int& energyPoints ) {
 	if (energyPoints < 0)
-		energyPoints = 0;
-	this->_energyPoints = energyPoints;
+		this->_energyPoints = 0;
+	else
+		this->_energyPoints = energyPoints;
 	return ;
 }
 
-int	ClapTrap::getAttackDamage( void ) const {
+const int&	ClapTrap::getAttackDamage( void ) const {
 	return this->_attackDamage;
 }
 
-void	ClapTrap::setAttackDamage( int attackDamage ) {
+void	ClapTrap::setAttackDamage( const int& attackDamage ) {
 	this->_attackDamage = attackDamage;
 	return ;
 }

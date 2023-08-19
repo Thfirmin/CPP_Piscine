@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 22:15:43 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/07 00:30:32 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/19 02:53:23 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ class	ClapTrap {
 
 		ClapTrap&	operator=( ClapTrap const& sign );
 
-		std::string	getName( void ) const;
-		void		setName( std::string name );
-		int			getHitPoints( void ) const;
-		void		setHitPoints( int hitPoints );
-		int			getEnergyPoints( void ) const;
-		void		setEnergyPoints( int energyPoints );
-		int			getAttackDamage( void ) const;
-		void		setAttackDamage( int attackDamage );
+		const std::string&	getName( void ) const;
+		void		setName( const std::string& name );
+		const int&			getHitPoints( void ) const;
+		void		setHitPoints( const int& hitPoints );
+		const int&			getEnergyPoints( void ) const;
+		void		setEnergyPoints( const int& energyPoints );
+		const int&			getAttackDamage( void ) const;
+		void		setAttackDamage( const int& attackDamage );
 
 		static ClapTrapList*	getClapTrapList( void );
 
