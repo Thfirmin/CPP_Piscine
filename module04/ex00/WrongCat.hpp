@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 11:27:52 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/21 22:02:44 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/08/21 22:00:09 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/08/21 22:04:54 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class	Cat : public Animal {
+class	WrongCat : public WrongAnimal {
 	public:
-		Cat(void);
-		Cat(const Cat& src);
-		~Cat(void);
+		WrongCat(void);
+		WrongCat(const WrongCat& src);
+		~WrongCat(void);
 
 		void	makeSound(void) const;
 
-		Cat&	operator=(const Cat& sign);
-
-	protected:
-	private:
+		WrongCat&	operator=(const WrongCat& sign);
 };
 
 #endif

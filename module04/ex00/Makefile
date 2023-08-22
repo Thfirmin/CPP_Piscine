@@ -1,4 +1,4 @@
-NAME =	binary
+NAME =	polymorphism
 
 CPP =	c++
 
@@ -6,7 +6,10 @@ CPPFLAGS =	-std=c++98 -g -Wall -Wextra -Werror
 
 SRCS = main.cpp \
 	   Animal.cpp \
-	   Dog.cpp
+	   Dog.cpp \
+	   Cat.cpp \
+	   WrongAnimal.cpp \
+	   WrongCat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

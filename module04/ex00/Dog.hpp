@@ -6,7 +6,7 @@
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 11:20:52 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/20 11:26:30 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:02:36 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 # include "Animal.hpp"
 
-class Dog : public Animal {
+class	Dog : public Animal {
 	public:
 		Dog(void);
 		Dog(const Dog& src);
 		~Dog(void);
 
-		Dog& operator=(const Dog& sign);
+		void	makeSound(void) const;
+
+		Dog&	operator=(const Dog& sign);
+
+	protected:
+	private:
 };
 
 #endif
