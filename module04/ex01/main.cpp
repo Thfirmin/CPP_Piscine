@@ -6,7 +6,7 @@
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 23:51:45 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/23 16:50:37 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:03:52 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,12 @@ int	main(void)
 void	printAnimalArray(Animal** farm, int arrLen)
 {
 	for (int i = 0; i < arrLen; i ++)
+	{
 		std::cout << *farm[i];
+		std::cout << "this Animal does say:" << std::flush;
+		farm[i]->makeSound();
+		std::cout << std::endl;
+	}
 	return ;
 }
 
