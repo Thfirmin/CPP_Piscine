@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:08:57 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/23 15:42:36 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/24 23:02:22 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,14 @@ std::ostream&	operator<<(std::ostream& out, const Brain& brain) {
 
 // GETTER * SETTER |============================================================
 const std::string&	Brain::getIdeas(int index) const {
+	if (index < 0 || index >= BRAIN_MAX_IDEAS)
+		return "";
 	return this->ideas[index];
 }
 
 void	Brain::setIdeas(int index, const std::string& _idea) {
+	if (index < 0 || index >= BRAIN_MAX_IDEAS)
+		return ;
 	this->ideas[index] = _idea;
 	return ;
 }

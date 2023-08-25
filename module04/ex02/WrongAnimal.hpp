@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:46:00 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/22 09:25:58 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/24 23:02:45 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	WrongAnimal {
 		WrongAnimal(const WrongAnimal& src);
 		virtual ~WrongAnimal(void);
 
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 
 		virtual WrongAnimal&	operator=(const WrongAnimal& sign);
 

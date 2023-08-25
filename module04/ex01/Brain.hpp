@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:06:06 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/08/22 16:49:09 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/08/24 23:00:34 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	Brain {
 		void	setIdeas(int index, const std::string& _idea);
 
 	private:
-		std::string	ideas[100];
+		std::string	ideas[BRAIN_MAX_IDEAS];
 };
 
 std::ostream&	operator<<(std::ostream& out, const Brain& brain);
