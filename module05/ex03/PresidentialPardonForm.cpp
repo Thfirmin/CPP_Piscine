@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:16:34 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/10/08 23:20:50 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/10/10 05:38:12 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ PresidentialPardonForm::~PresidentialPardonForm(void) {
 }
 
 // METHOD |=====================================================================
+void	PresidentialPardonForm::execute(const Bureaucrat& bureaucrat) const {
+	if (AForm::authExec(*this, bureaucrat)) {
+		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	}
+	return ;
+}
 
 // OPERATOR |===================================================================
 PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm& src) {

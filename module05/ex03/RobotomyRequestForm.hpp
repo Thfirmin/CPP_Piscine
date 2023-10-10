@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:12:22 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/10/08 22:59:04 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/10/10 05:28:42 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm(const RobotomyRequestForm& src);
 		RobotomyRequestForm(const std::string& target);
 		~RobotomyRequestForm(void);
+
+		void	execute(const Bureaucrat& bureaucrat) const;
 
 		RobotomyRequestForm&	operator=(const RobotomyRequestForm& src);
 

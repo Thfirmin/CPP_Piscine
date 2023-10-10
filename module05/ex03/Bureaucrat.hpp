@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:12:22 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/10/08 21:07:29 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/10/10 08:46:08 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ class	Bureaucrat {
 		static grade_t	authGrade(grade_t grade);
 		void			incrementGrade(void);
 		void			decrementGrade(void);
-		void			signForm(AForm* form);
+		void			signForm(AForm& form);
+		void			executeForm(const AForm& form);
 
 		Bureaucrat&	operator=(const Bureaucrat& src);
 

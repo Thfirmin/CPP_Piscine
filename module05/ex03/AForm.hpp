@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:12:22 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/10/08 23:08:32 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/10/10 08:57:59 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ class AForm {
 		virtual ~AForm(void) = 0;
 
 		static grade_t	authGrade(const grade_t grade);
+		static bool		authExec(const AForm& form, const Bureaucrat& bureaucrat);
 		void			beSigned(const Bureaucrat& bureaucrat);
+		virtual void			execute(const Bureaucrat& bureaucrat) const = 0;
 		
 		AForm&	operator=(const AForm& src);
 

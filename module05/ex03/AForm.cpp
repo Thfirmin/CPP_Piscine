@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:16:34 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/10/08 23:08:24 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/10/10 08:57:57 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,19 @@ grade_t	AForm::authGrade(const grade_t grade) {
 	return grade;
 }
 
+bool	AForm::authExec(const AForm& form, const Bureaucrat& bureaucrat) {
+	if (!form.getSign()) {
+		throw std::logic_error("Form isn't signed");
+	}
+	if (form.getRequiredGradeToExec() < bureaucrat.getGrade()) {
+		std::stringstream	stream;
+
+		stream << "Need grade " << form.getRequiredGradeToExec() << " or higher to execute this form";
+		throw AForm::GradeTooLowException(stream.str());
+	}
+	return true;
+}
+
 void	AForm::beSigned(const Bureaucrat& bureaucrat) {
 	if (this->_requiredGradeToSign < bureaucrat.getGrade()) {
 		std::stringstream stream;
@@ -79,6 +92,7 @@ AForm&	AForm::operator=(const AForm& src) {
 	return (*this);
 }
 
+
 std::ostream&	operator<<(std::ostream& out, const AForm* log) {
 	out << log->getName() << " (\e[34m" << &log << "\e[0m){" << std::endl;
 	out << "\trequiredGradeToSign: \e[32m" << log->getRequiredGradeToSign() << "\e[0m" << std::endl;
@@ -88,6 +102,7 @@ std::ostream&	operator<<(std::ostream& out, const AForm* log) {
 	out << "}" << std::endl;
 	return (out);
 }
+
 
 // GETTER * SETTER |============================================================
 const std::string&	AForm::getName(void) const {

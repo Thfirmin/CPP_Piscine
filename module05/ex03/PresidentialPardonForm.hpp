@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:12:22 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/10/08 23:20:50 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/10/10 05:29:17 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm& src);
 		PresidentialPardonForm(const std::string& target);
 		~PresidentialPardonForm(void);
+
+		void	execute(const Bureaucrat& bureaucrat) const;
 
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm& src);
 
