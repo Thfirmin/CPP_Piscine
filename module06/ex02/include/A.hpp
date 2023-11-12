@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 21:49:43 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/08 21:50:08 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/11/11 22:42:25 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/11/11 22:45:45 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef A_HPP
+# define A_HPP
 
-int	main(void)
-{
-	std::cout << "Hello, World!" << std::endl;
-	return (0);
-}
+# include "Base.hpp"
+
+class	A: public Base {};
+
+#endif

@@ -4,18 +4,21 @@ CPP			= c++
 
 CPPFLAGS	= -std=c++98 -g -Wall -Wextra -Werror
 
-SRCS		= \
-			  main.cpp \
-			  Base.cpp \
-			  A.cpp \
-			  B.cpp \
-			  C.cpp
+CLASS_SRC	= $(addprefix class/, \
+			  	Base.cpp \
+			  )
+
+SRCS		= $(addprefix src/, \
+			  	main.cpp \
+			   )
+
+SRCS		+= $(CLASS_SRC)
 
 OBJS		= $(SRCS:.cpp=.o)
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
+$(NAME):	$(OBJS)
 	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
@@ -27,6 +30,6 @@ fclean:	clean
 re:	fclean all
 
 .cpp.o:
-	$(CPP) $(CPPFLAGS) -c $< -o $(<:.cpp=.o)
+	$(CPP) $(CPPFLAGS) -I include/ -c $< -o $(<:.cpp=.o)
 
 .PHONY:	all clean fclean re

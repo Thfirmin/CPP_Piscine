@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   C.hpp                                              :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 13:12:22 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/08 22:00:24 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/11/11 22:12:52 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/11/12 00:49:00 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C_HPP
-# define C_HPP
+#include "cpp06.02.hpp"
 
-# include <iostream>
-# include "Base.hpp"
+int	main(void)
+{
+	Base*	test;
 
-class	C: public Base {
-	public:
-		C(void);
-		C(const C& src);
-		~C(void);
-
-		C&	operator=(const C& src);
-};
-
-std::ostream&	operator<<(std::ostream& out, const C& log);
-
-#endif
+	test = generate();
+	std::cout << "test: (" << test << ")" << std::endl;
+	identify(test);
+	identify(*test);
+	delete test;
+	return (0);
+}
