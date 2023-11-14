@@ -1,7 +1,9 @@
 #include <iostream>
 #include <Array.hpp>
+#include <stdlib.h>
 
 #define MAX_VAL 750
+
 
 int	main(void)
 {
@@ -30,6 +32,7 @@ int	main(void)
 	std::cout << arr2;
 	return (0);
 }
+
 
 /*
 int main(int, char**)
