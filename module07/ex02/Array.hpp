@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 21:21:54 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/13 22:44:11 by thfirmin         ###   ########.fr       */
+/*   Created: 2023/11/14 16:24:32 by thfirmin          #+#    #+#             */
+/*   Updated: 2023/11/14 17:14:15 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ class	Array {
 		Array<T>(uint n);
 		~Array<T>(void);
 
-		T&			operator[](int idx) const;
 		Array<T>&	operator=(const Array<T>& src);
+		T&			operator[](const int idx);
 
-		T*		getArray(void) const;
 		uint	size(void) const;
+		T*		ptr(void) const;
 
 	private:
 		T*		_array;
@@ -35,7 +35,7 @@ class	Array {
 };
 
 template <typename T>
-std::ostream&	operator<<(std::ostream& out, const Array<T>& arr);
+std::ostream&	operator<<(std::ostream& out, const Array<T>& log);
 
 # include "Array.tpp"
 

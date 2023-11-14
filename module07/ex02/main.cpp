@@ -8,28 +8,36 @@
 int	main(void)
 {
 	Array<int>	arr(5);
+	std::cout << "arr(5): " << arr;
+	
 	Array<int>	arr2(arr);
+	std::cout << "arr2(arr): " << arr2 << std::endl;
 
 	arr[0] = 42;
+	std::cout << "> arr[0] = 42" << std::endl << std::endl;
 	arr[1] = 32;
-	
-	std::cout << arr;
-	std::cout << arr2;
+	std::cout << "> arr[1] = 32" << std::endl << std::endl;
+
+	std::cout << "arr(5): " << arr;
+	std::cout << "arr2(arr): " << arr2 << std::endl;
 
 	arr2[0] = 200;
+	std::cout << "> arr2[0] = 200" << std::endl << std::endl;
 	
-	std::cout << arr;
-	std::cout << arr2;
+	std::cout << "arr(5): " << arr;
+	std::cout << "arr2(arr): " << arr2 << std::endl;
 
 	arr2 = arr;
+	std::cout << "> arr2 = arr" << std::endl << std::endl;
 
-	std::cout << arr;
-	std::cout << arr2;
+	std::cout << "arr(5): " << arr;
+	std::cout << "arr2(arr): " << arr2 << std::endl;
 
 	arr2[2] = 43;
+	std::cout << "> arr2[2] = 43" << std::endl << std::endl;
 	
-	std::cout << arr;
-	std::cout << arr2;
+	std::cout << "arr(5): " << arr;
+	std::cout << "arr2(arr): " << arr2 << std::endl;
 	return (0);
 }
 
