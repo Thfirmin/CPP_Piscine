@@ -5,7 +5,8 @@ CPP			= c++
 CPPFLAGS	= -std=c++98 -g -Wall -Wextra -Werror
 
 SRCS		= \
-			  main.cpp
+			  main.cpp \
+			  Span.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
