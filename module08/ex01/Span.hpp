@@ -6,7 +6,7 @@
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:43:28 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/18 05:35:04 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:03:53 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ class	Span {
 		void	addNumber(int nbr);
 		int		shortestSpan(void);
 		int		longestSpan(void);
+		void	fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 		void	getList(void);
+		uint	getMaxNumber(void) const;
 
 	private:
 		std::vector<int>	_list;
