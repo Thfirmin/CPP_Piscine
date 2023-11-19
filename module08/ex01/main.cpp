@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 23:07:01 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/18 18:08:38 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:34:21 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int main(int argc, char *argv[])
 
 	for (int i = 1; i < argc; i ++)
 		list.push_back(atoi(*(argv + i)));
-
-//	std::cout << "capacity: " << sp.getMaxNumber() << " distance: " << std::distance(list.begin(), list.end()) << std::endl;
 
 	sp.fillSpan(list.begin(), list.end());
 	sp.getList();
