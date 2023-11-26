@@ -7,6 +7,7 @@
 # include <string>
 # include <stdexcept>
 # include <ctime>
+# include <cstdlib>
 
 typedef unsigned short int usint;
 
@@ -15,6 +16,7 @@ class Date
 	public:
 		Date(void);
 		Date(const usint year, const usint month, const usint day, const char separator);
+		Date(const std::string& str, const char separator);
 		Date(const Date& date);
 		~Date(void);
 

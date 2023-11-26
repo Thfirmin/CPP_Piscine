@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:08:08 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/23 19:42:59 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:29:25 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,79 +105,3 @@ DataBase*	dbInit(const char* dbFile) {
 }
 
 // Date |+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// CONSTRUCTOR * DESTRUCTOR |===================================================
-Date::Date(void) : _day(1), _month(1), _year(1) {
-	this->authDate();
-	return ;
-}
-
-Date::Date(const int day, const int month, const int year) : _day(day), _month(month), _year(year) {
-	this->authDate();
-	return ;
-}
-
-Date::Date(const std::string& str) {
-	this->parseDateString(str);
-	this->authDate();
-}
-
-Date::Date(const Date& date) {
-	*this = date;
-	return ;
-}
-
-// OPERATOR |===================================================================
-Date&	Date::operator=(const Date& date) {
-	this->_day = date.getDay();
-	this->_month = date.getMonth();
-	this->_year = date.getYear();
-	this->_split = date.getSplit();
-	return (*this);
-}
-
-bool	Date::operator<(const Date& date) {
-	return (this->dateToDay() < date.dateToDay());
-}
-
-bool	Date::operator>(const Date& date) {
-	return (this->dateToDay() > date.dateToDay());
-}
-
-bool	Date::operator<=(const Date& date) {
-	return (this->dateToDay() <= date.dateToDay());
-}
-
-bool	Date::operator>=(const Date& date) {
-	return (this->dateToDay() >= date.dateToDay());
-}
-
-bool	Date::operator==(const Date& date) {
-	return (this->dateToDay() == date.dateToDay());
-}
-
-bool	Date::operator!=(const Date& date) {
-	return (this->dateToDay() != date.dateToDay());
-}
-
-Date&	Date::operator++(void) {
-
-	return (*this);
-}
-
-Date	Date::operator++(int) {
-	return (*this);
-}
-
-Date&	Date::operator--(void) {
-	return (*this);
-}
-
-Date	Date::operator--(void) {
-	return (*this);
-}
-
-// METHOD |=====================================================================
-
-// GETTER * SETTER |============================================================
-
-

@@ -15,6 +15,27 @@ Date::Date(const usint year, const usint month, const usint day, const char sepa
 	return ;
 }
 
+Date::Date(const std::string& str, const char separator) : _separator(separator) {
+	size_t	idx[2] = {0};
+
+	if (!Date::_isValidSeparator(separator)) {
+		throw std::invalid_argument("Invalid separator");
+	}
+
+	idx[0] = str.find(separator);
+	idx[1] = str.rfind(separator);
+	if ((str.size() != 10) || (idx[0] == std::string::npos) || (idx[1] == std::string::npos)) {
+		throw std::logic_error("Invalid date format");
+	}
+	this->_year = atoi(str.substr(0, idx[0]).c_str());
+	this->_month = atoi(str.substr((idx[0] + 1), (idx[1] - (idx[0] + 1))).c_str());
+	this->_day = atoi(str.substr(idx[1] + 1).c_str());
+	if (!Date::_isValidDate(this->_day, this->_month, this->_year)) {
+		throw std::invalid_argument("Invalid date");
+	}
+	return ;
+}
+
 Date::Date(const Date& date) {
 	*this = date;
 	return ;
