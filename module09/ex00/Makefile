@@ -6,8 +6,7 @@ CPPFLAGS	= -std=c++98 -g -Wall -Wextra -Werror
 
 SRCS		= \
 			  main.cpp \
-			  BitcoinExchange.cpp \
-			  Date.cpp
+			  BitcoinExchange.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 

@@ -6,7 +6,7 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 08:55:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/24 16:38:48 by thfirmin         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:31:21 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,33 @@
 #include <cctype>
 #include "BitcoinExchange.hpp"
 
-static void	checkInputRow(std::string& line);
+static void checkInputValue(const std::string line);
 
-static void	readInputFile(const std::string fileName);
+static void checkInputDate(const std::string& line);
+
+static void	checkInputRow(const std::string& line);
+
+static void	readInputFile(const std::string fileName, DataBase* db);
 
 static void	validInFile(const std::string fileName);
 
 static void	BtcLogo(void);
+
+static int	exit(int ret, DataBase ** db);
 
 int	main(int argc, char *argv[])
 {
 	if ((argc < 2) || (argc > 3))
 	{
 		std::cerr << "Usage: ./btc <filepath> [<dbFile>]" << std::endl;
-		return (1);
+		return (exit(1, 0));
 	}
 
 	BtcLogo();
 
 	DataBase	*dbPtr = dbInit(*(argv + 2));
 	if (!dbPtr) {
-		return (2);
+		return (exit(2, &dbPtr));
 	}
 
 	try {
@@ -45,16 +51,19 @@ int	main(int argc, char *argv[])
 		std::cout << "[\e[32mINFO\e[0m]: Input file has been validated!" << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "[\e[31mERROR\e[0m]: " << e.what() << std::endl;
-		delete dbPtr;
-		return (3);
+		return (exit(3, &dbPtr));
 	}
-	std::cout << "╒════════════════════════════════════════╡" << std::endl;
-	readInputFile(*(argv + 1));
-	std::cout << "╘════════════════════════════════════════╡" << std::endl;
+	readInputFile(*(argv + 1), dbPtr);
 	
+	return (exit(0, &dbPtr));
+}
 
-	delete dbPtr;
-	return (0);
+static int	exit(int ret, DataBase ** db)
+{
+	if (db && *db)
+		delete *db;
+	*db = NULL;
+	return (ret);
 }
 
 static void	BtcLogo(void)
@@ -94,65 +103,88 @@ static void	validInFile(const std::string fileName)
 	file.close();
 }
 
-static void	readInputFile(const std::string fileName)
+static void	readInputFile(const std::string fileName, DataBase* db)
 {
 	std::ifstream	file(fileName.c_str());
 	std::string		line;
+	Date			date;
+	double			val;
+	DataRow			data;
 
+(void) db;
+	std::cout << "╒════════════════════════════════════════╡" << std::endl;
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
 		try {
 			checkInputRow(line);
-			std::cout << "├ " << line << std::endl;
+			checkInputDate(line);
+			checkInputValue(line);
+			
+			date = Date(line.substr(0, line.find(" | ")), '-');
+			val = atof(line.substr(line.find(" | ") + 3).c_str());
+			data = db->searchByDate(date);
+			
+			std::cout << "├ " << date.toString() << " => " << val << " = " << val * data.val << std::endl;
 		} catch (std::exception& e) {
 			std::cerr << "├ Error: " << e.what() << std::endl;
 		}
 	}
 	file.close();
+	std::cout << "╘════════════════════════════════════════╡" << std::endl;
 }
 
-static void	checkInputRow(std::string& line)
+static void checkInputRow(const std::string& line)
 {
 	std::stringstream	stream;
-	std::string			str;
-	size_t				idx;
-	int					date[3];
-	int					aux;
 
-	idx = line.find(" | ");
-	if (idx == std::string::npos) {
-		stream << "bad input => " << line;
-		throw std::logic_error(stream.str());
-	}
+	size_t	idx1 = line.find(" | ");
+	size_t	idx2 = line.rfind(" | ");
 
-	str = line.substr(0, idx);
-	if ((str.size() != 10) || (str[4] != '-') || (str[7] != '-'))
-		throw std::logic_error("incorrect date format");
-
-	for (std::string::iterator it = line.begin(); it != (line.begin() + idx); it ++)
-		if (!isdigit(*it))
-			if ((std::distance(line.begin(), it) != 4) && (std::distance(line.begin(), it) != 7))
-				throw std::logic_error("date consists of numbers");
-	
-	date[0] = atoi(line.substr(0, 4).c_str());
-	date[1] = atoi(line.substr(5, 2).c_str());
-	date[2] = atoi(line.substr(8, 2).c_str());
-	if ((date[0] > 2023) || (!date[1] || (date[1] > 12)) || (!date[2] || (date[2] > 31)))
-		throw std::logic_error("non-existent date");
-
-	if ((date[2] == 1) || (date[2] == 3) || (date[2] == 5) || (date[2] == 7) || (date[2] == 8) || (date[2] == 10) || (date[2] == 12))
-		aux = 31;
-	else if ((date[2] == 4) || (date[2] == 6) || (date[2] == 9) || (date[2] == 11))
-		aux = 30;
-	else {
-		aux = 28;
-		if (!(date[0] % 4) && ((date[0] % 100) || !(date[0] % 400)))
-			aux ++;
-	}
-	if (date[2] > date[0])
-		throw std::logic_error("non-existent date");
-
-	str = line.substr(idx + 3);
+	stream << "Bad input => " << line;
+	if ((idx1 == std::string::npos) || (idx1 != idx2))
+		throw std::invalid_argument(stream.str());
+	if (line.size() < 14)
+		throw std::invalid_argument(stream.str());
+	return ;
 }
 
+static void checkInputDate(const std::string& line)
+{
+	Date date(line.substr(0, line.find(" | ")), '-');
+	return ;
+}
+
+static void checkInputValue(const std::string line)
+{
+	std::string	str = line.substr(line.find(" | ") + 3);
+	size_t		idx = 0;
+	
+	if (str.at(0) == '-')
+		throw std::invalid_argument("Value is not a positive number");
+
+	idx = str.find('.');
+	idx = (idx == std::string::npos) ? str.size() : idx;
+	if ((idx > 5) || (atof(str.c_str()) > 1000))
+		throw std::invalid_argument("Value too large a number");
+
+	std::string::iterator it = str.begin();
+	if (*it == '+')
+		it ++;
+	if (!isdigit(*it))
+		throw  std::invalid_argument("Value is not a number");
+	idx = 0;
+	while (it != str.end()) 
+	{
+		if (*it == '.')
+		{
+			if (idx || !isdigit(*(it + 1)))
+				throw  std::invalid_argument("Value is not a number");
+			idx ++;
+		}
+		else if (!isdigit(*it))
+			throw  std::invalid_argument("Value is not a number");
+		it ++;
+	}
+	return ;
+}
