@@ -1,4 +1,4 @@
-NAME	= cpp09-01.x
+NAME	= RPN
 
 CPP		= g++
 
