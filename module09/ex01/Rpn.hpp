@@ -1,33 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   Rpn.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 17:57:38 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/12/02 18:27:29 by thfirmin         ###   ########.fr       */
+/*   Updated: 2024/01/06 00:15:59 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef Rpn_HPP
+# define Rpn_HPP
 
-#include <stack>
+# include <stack>
+# include <string>
 
-class	RPN {
+enum e_operations {
+	OP_NULL,
+	OP_SUM,
+	OP_SUB,
+	OP_MULT,
+	OP_DIV
+};
+
+class	Rpn {
 	public:
-		void start(std::string expr);
+		static void load(const std::string& expr);
+		static void	start(void);
+
+		static int	getResponse(void);
+		static bool	isLoaded(void);
+		static bool	isStarted(void);
 
 	private:
-		RPN(void);
-		RPN(const RPN& src);
-		~RPN(void);
+		Rpn(void);
+		Rpn(const Rpn& copy);
+		~Rpn(void);
 
-		std::stack<char>	_stack;
+		static std::stack<std::string>	_stack;
+		static bool				_isLoaded;
+		static bool				_isStarted;
+		static signed int		_response;
 
-		RPN&	operator=(const RPN& src);
+		Rpn&	operator=(const Rpn& src);
 
+		static int	_isOperator(char op);
 };
 
 #endif
