@@ -6,7 +6,7 @@
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 17:58:39 by thfirmin          #+#    #+#             */
-/*   Updated: 2024/01/06 14:40:48 by thfirmin         ###   ########.fr       */
+/*   Updated: 2024/01/28 05:11:43 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ int	Rpn::_isOperator(char c) {
 		if (c == ops[enumIdx])
 			return (enumIdx + 1);
 	return (OP_NULL);
+}
+
+int	Rpn::calculate(const std::string& expr) {
+	Rpn::load(expr);
+	Rpn::start();
+	return (Rpn::getResponse());
 }
 
 void	Rpn::load(const std::string& expr) {

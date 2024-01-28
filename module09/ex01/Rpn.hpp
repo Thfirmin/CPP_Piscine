@@ -6,7 +6,7 @@
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 17:57:38 by thfirmin          #+#    #+#             */
-/*   Updated: 2024/01/06 00:15:59 by thfirmin         ###   ########.fr       */
+/*   Updated: 2024/01/28 05:11:02 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ enum e_operations {
 
 class	Rpn {
 	public:
+		static int calculate(const std::string& expr);
 		static void load(const std::string& expr);
 		static void	start(void);
 
