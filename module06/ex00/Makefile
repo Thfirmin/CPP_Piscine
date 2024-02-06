@@ -6,7 +6,8 @@ CPPFLAGS	= -std=c++98 -g -Wall -Wextra -Werror
 
 SRCS		= \
 			  main.cpp \
-			  ScalarConverter.cpp
+			  ScalarConverter.cpp \
+			  ScalarConverterUtils.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
