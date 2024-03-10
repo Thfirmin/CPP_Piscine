@@ -1,6 +1,6 @@
 NAME		= identifyRealType
 
-CPP			= c++
+CPP			= g++
 
 CPPFLAGS	= -std=c++98 -g -Wall -Wextra -Werror
 

@@ -6,7 +6,7 @@
 /*   By: thfirmin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:43:28 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/18 18:03:53 by thfirmin         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:31:18 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class	Span {
 	private:
 		std::vector<int>	_list;
 		uint				_maxNumber;
+
+		std::vector<int>	_sort(void);
 		
 };
 

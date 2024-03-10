@@ -14,17 +14,21 @@
 # include <sstream>
 
 template <class T>
-int	easyfind(T list, int find) {
+int	easyfind(T list, int find)
+{
 	typename T::iterator	end = list.end();
+	int						index;
 
-	for (typename T::iterator it = list.begin(); it != end; ++ it) {
-		if (*it == find) {
-			std::cout << find << " founded in index: " << std::distance(list.begin(), it) << std::endl;
-			return (std::distance(list.begin(), it));
+	for (typename T::iterator it = list.begin(); it != end; ++ it)
+	{
+		if (*it == find)
+		{
+			index = std::distance(list.begin(), it);
+			std::cout << find << " founded in index: " << index << std::endl;
+			return (index);
 		}
 	}
 	std::stringstream	stream;
 	stream << find << " not founded";
 	throw std::logic_error(stream.str());
-	return (-1);
 }
