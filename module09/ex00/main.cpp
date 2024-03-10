@@ -6,9 +6,11 @@
 /*   By: thfirmin <thfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 08:55:58 by thfirmin          #+#    #+#             */
-/*   Updated: 2023/11/28 16:31:21 by thfirmin         ###   ########.fr       */
+/*   Updated: 2024/03/10 05:59:42 by thfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#define STD_DATABASE_PATH "asset/database/data.csv"
 
 #include <iostream>
 #include <sstream>
@@ -28,21 +30,21 @@ static void	validInFile(const std::string fileName);
 
 static void	BtcLogo(void);
 
-static int	exit(int ret, DataBase ** db);
+static int	exitProgram(int ret, DataBase ** db);
 
 int	main(int argc, char *argv[])
 {
 	if ((argc < 2) || (argc > 3))
 	{
 		std::cerr << "Usage: ./btc <filepath> [<dbFile>]" << std::endl;
-		return (exit(1, 0));
+		return (exitProgram(1, 0));
 	}
 
 	BtcLogo();
 
-	DataBase	*dbPtr = dbInit(*(argv + 2));
+	DataBase	*dbPtr = dbInit((argv[2]) ? argv[2] : "asset/database/data.csv");
 	if (!dbPtr) {
-		return (exit(2, &dbPtr));
+		return (exitProgram(2, &dbPtr));
 	}
 
 	try {
@@ -51,18 +53,20 @@ int	main(int argc, char *argv[])
 		std::cout << "[\e[32mINFO\e[0m]: Input file has been validated!" << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "[\e[31mERROR\e[0m]: " << e.what() << std::endl;
-		return (exit(3, &dbPtr));
+		return (exitProgram(3, &dbPtr));
 	}
 	readInputFile(*(argv + 1), dbPtr);
 	
-	return (exit(0, &dbPtr));
+	return (exitProgram(0, &dbPtr));
 }
 
-static int	exit(int ret, DataBase ** db)
+static int	exitProgram(int ret, DataBase ** db)
 {
 	if (db && *db)
+	{
 		delete *db;
-	*db = NULL;
+		*db = NULL;
+	}
 	return (ret);
 }
 

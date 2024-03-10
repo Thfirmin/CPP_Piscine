@@ -1,4 +1,4 @@
-NAME		= cpp09.00.x
+NAME		= btc
 
 CPP			= c++
 
